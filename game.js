@@ -14,9 +14,9 @@ const columns = [];
 const cells=[];
 
 //noCol the number of columns
-var noCol=4;
+let noCol=4;
 //noRow the number of rows
-var noRow=4;
+let noRow=4;
 
 //Colour an element's background to black
 function colourBlack(el){
@@ -40,14 +40,14 @@ function colourRandom(el){
 
 //Increment an element's background color alpha by 10% increments
 function colorizeBlack(el){
-    var shade=el.style.backgroundColor;
+    let shade=el.style.backgroundColor;
     if(shade==''){
         el.style.backgroundColor="rgba(0,0,0,0.1)";   
     }
     else{
 
         if(shade.substr(3,1) == 'a' && shade.substr(14,1) != '1'){
-           var alpha = parseFloat("0."+shade.substr(16,1))
+           let alpha = parseFloat("0."+shade.substr(16,1))
            alpha = alpha + 0.1;
            shade = shade.substr(0,13)+alpha+")";
         }
