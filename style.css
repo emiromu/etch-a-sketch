@@ -18,7 +18,7 @@
     height: 500px;
     border-style: dashed;
     border-color: gray;
-    border-width: 1px;
+    border-width: thin;
 }
 
 .col{

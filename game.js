@@ -3,6 +3,11 @@ const canvas = document.querySelector("#canvas");
 const topmenu = document.querySelector("#topmenu");
 const eraser = document.querySelector("#eraser");
 
+//Option selection for drawing mode
+const radio1 = document.querySelector("#radio1");
+const radio2 = document.querySelector("#radio2");
+const radio3 = document.querySelector("#radio3");
+
 //array of columns that contain the cells
 const columns = [];
 //array for the cells
@@ -78,15 +83,24 @@ function setup(noCol, noRow){
             columns[i].appendChild(cells[i+j]);   
             //mouse hover event
             document.getElementById("cell"+i+";"+j).addEventListener("mouseover",function(){
-                colorizeBlack(this);
+                if(radio1.checked==true){
+                    colourBlack(this);
+                }else if(radio2.checked==true){
+                    colourRandom(this);
+                }else if(radio3.checked==true){
+                    colorizeBlack(this);
+                }else{
+                    colourBlack(this);
+                }
+                
             });
         };
     };
 }
 
 eraser.addEventListener("click",function(){
-    var noCol=0;
-    var noRow=0;
+    noCol=0;
+    noRow=0;
 
     //NOT square
     /*
@@ -106,4 +120,16 @@ eraser.addEventListener("click",function(){
     }
 
     setup(noCol,noRow);
+});
+
+
+//refresh canvas when changing drawmode
+radio1.addEventListener("change", function(){
+    setup(noCol, noRow);
+});
+radio2.addEventListener("change", function(){
+    setup(noCol, noRow);
+});
+radio3.addEventListener("change", function(){
+    setup(noCol, noRow);
 });
