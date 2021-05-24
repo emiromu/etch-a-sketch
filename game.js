@@ -14,7 +14,7 @@ var noCol=4;
 var noRow=4;
 
 //Colour an element's background to black
-function colourblack(el){
+function colourBlack(el){
     el.style.backgroundColor="black";
 };
 
@@ -28,8 +28,29 @@ function generateRandomColour(){
 };
 
 //Colour an element's background to random
-function colourrandom(el){
+function colourRandom(el){
     el.style.backgroundColor=generateRandomColour();
+};
+
+
+//Increment an element's background color alpha by 10% increments
+function colorizeBlack(el){
+    var shade=el.style.backgroundColor;
+    if(shade==''){
+        el.style.backgroundColor="rgba(0,0,0,0.1)";   
+    }
+    else{
+
+        if(shade.substr(3,1) == 'a' && shade.substr(14,1) != '1'){
+           var alpha = parseFloat("0."+shade.substr(16,1))
+           alpha = alpha + 0.1;
+           shade = shade.substr(0,13)+alpha+")";
+        }
+        else{
+            el.style.backgroundColor="rgba(0,0,0,1)";
+        }
+        el.style.backgroundColor=shade;
+    }
 };
 
 //Setup the sketch canvas noCol x noRow
@@ -57,7 +78,7 @@ function setup(noCol, noRow){
             columns[i].appendChild(cells[i+j]);   
             //mouse hover event
             document.getElementById("cell"+i+";"+j).addEventListener("mouseover",function(){
-                colourrandom(this);
+                colorizeBlack(this);
             });
         };
     };
