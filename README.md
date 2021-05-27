@@ -1,2 +1,2 @@
 # etch-a-sketch
-TOP Foundation : Etch-a-Sketch project
+The Odin Project : Etch-a-Sketch project
